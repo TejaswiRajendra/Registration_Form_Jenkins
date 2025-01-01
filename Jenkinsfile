@@ -19,7 +19,7 @@ pipeline {
                 mkdir -p /tmp/deployment_directory_signup
 
                 # Copy the signup.html file from the Jenkins workspace
-                cp ${WORKSPACE}/Registration_Form/Form.html /tmp/deployment_directory_signup/
+                cp ${WORKSPACE}/Registration_Form/webpage.html /tmp/deployment_directory_signup/
 
                 # Start the Python HTTP server on port 9292
                 nohup python3 -m http.server 9292 --directory /tmp/deployment_directory_signup > /tmp/server_signup.log 2>&1 &
