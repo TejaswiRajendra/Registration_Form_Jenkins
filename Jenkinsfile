@@ -3,28 +3,28 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the signup page branch...'
+                echo 'Building the webApp branch...'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing the signup page branch...'
+                echo 'Testing the webApp branch...'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying the signup page branch...'
+                echo 'Deploying the webApp branch...'
                 sh '''
                 # Create the deployment directory
-                mkdir -p /tmp/deployment_directory_signup
+                mkdir -p /tmp/deployment_directory_webApp
 
                 # Copy the signup.html file from the Jenkins workspace
-                cp ${WORKSPACE}/Registration_Form/webApp.html /tmp/deployment_directory_signup/
+                cp ${WORKSPACE}/Registration_Form/webApp.html /tmp/deployment_directory_webApp/
 
-                # Start the Python HTTP server on port 9292
-                nohup python3 -m http.server 9292 --directory /tmp/deployment_directory_signup > /tmp/server_signup.log 2>&1 &
+                # Start the Python HTTP server on port 9191
+                nohup python3 -m http.server 9191 --directory /tmp/deployment_directory_signup > /tmp/server_signup.log 2>&1 &
                 '''
-                echo "Signup page is being served on http://localhost:9292"
+                echo "webApp is being served on http://localhost:9191"
             }
         }
         stage('Archive HTML') {
