@@ -3,26 +3,26 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the main branch...'
+                echo 'Building the master branch...'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing the main branch...'
+                echo 'Testing the master branch...'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying the main branch...'
+                echo 'Deploying the master branch...'
                 sh '''
                 # Create the deployment directory
-                mkdir -p /tmp/deployment_directory_main
+                mkdir -p /tmp/deployment_directory_master
 
                 # Copy the signup.html file from the Jenkins workspace
-                cp ${WORKSPACE}/Registration_Form/Form.html /tmp/deployment_directory_main/
+                cp ${WORKSPACE}/Registration_Form/Form.html /tmp/deployment_directory_master/
 
                 # Start the Python HTTP server on port 9090
-                nohup python3 -m http.server 9090 --directory /tmp/deployment_directory_main > /tmp/server_main.log 2>&1 &
+                nohup python3 -m http.server 9090 --directory /tmp/deployment_directory_master > /tmp/server_master.log 2>&1 &
                 '''
                 echo "Form is being served on http://localhost:9090"
             }
