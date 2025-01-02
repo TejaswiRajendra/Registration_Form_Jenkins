@@ -22,7 +22,7 @@ pipeline {
                 cp ${WORKSPACE}/Registration_Form/webApp.html /tmp/deployment_directory_webApp/
 
                 # Start the Python HTTP server on port 9191
-                nohup python3 -m http.server 9191 --directory /tmp/deployment_directory_signup > /tmp/server_signup.log 2>&1 &
+                nohup python3 -m http.server 9191 --directory /tmp/deployment_directory_webApp > /tmp/server_webApp.log 2>&1 &
                 '''
                 echo "webApp is being served on http://localhost:9191"
             }
